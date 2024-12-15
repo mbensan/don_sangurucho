@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/">Aplicacion</a>
+    <a class="navbar-brand" href="/">Don Sangurucho</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -13,6 +13,14 @@
           <li class="nav-item">
             <%= button_to 'Cerrar sesión', destroy_user_session_path, class:'nav-link', method: :delete %>
           </li>
+          <% if current_user.role == 'admin' %>
+            <li class="nav-item">
+              <%= link_to 'Admin Productos', products_path, class:'nav-link'%>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Admin Combos', meals_path, class:'nav-link'%>
+            </li>
+          <% end %>
         <% else %>
           <li class="nav-item">
             <%= link_to 'Iniciar sesión', new_user_session_path, class:'nav-link'%>
